@@ -174,7 +174,15 @@ public class Collections {
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     public static <T> void sort(List<T> list, Comparator<? super T> c) {
-        list.sort(c);
+        if (!Boolean.parseBoolean(System.getProperty("sort.patch", "false"))) {
+            list.sort(c);
+            return;
+        }
+        Object[] array = list.toArray(new Object[list.size()]);
+        Arrays.sort(array, c);
+        for (int i = 0; i < array.length; i++) {
+            list.set(i, array[i]);
+        }
     }
 
 
