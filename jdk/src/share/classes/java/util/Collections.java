@@ -178,7 +178,7 @@ public class Collections {
             list.sort(c);
             return;
         }
-        Object[] array = list.toArray(new Object[list.size()]);
+        T[] array = (T[]) list.toArray(new Object[list.size()]);
         Arrays.sort(array, c);
         for (int i = 0; i < array.length; i++) {
             list.set(i, array[i]);
