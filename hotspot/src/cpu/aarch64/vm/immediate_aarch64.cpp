@@ -21,6 +21,7 @@
 
 #include <stdlib.h>
 #include "immediate_aarch64.hpp"
+#include <assert.h>
 
 // there are at most 2^13 possible logical immediate encodings
 // however, some combinations of immr and imms are invalid
