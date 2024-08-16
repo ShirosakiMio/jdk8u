@@ -122,6 +122,10 @@ static inline u_int32_t uimm(u_int32_t val, int hi, int lo)
 
 u_int64_t replicate(u_int64_t bits, int nbits, int count)
 {
+  if (nbits == 64) {
+    assert(count <= 1);
+    return bits;
+  }
   u_int64_t result = 0;
   // nbits may be 64 in which case we want mask to be -1
   u_int64_t mask = ones(nbits);
